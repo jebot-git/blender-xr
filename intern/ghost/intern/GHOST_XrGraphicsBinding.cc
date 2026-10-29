@@ -36,6 +36,8 @@
 #  include "GHOST_XrGraphicsBindingMetal.hh"
 #endif
 
+#include <cstdlib>
+
 #include "GHOST_IXrGraphicsBinding.hh"
 
 #if defined(WITH_OPENGL_BACKEND)
@@ -146,7 +148,7 @@ class GHOST_XrGraphicsBindingOpenGL : public GHOST_IXrGraphicsBinding {
 #    endif
       );
 
-      if (is_wayland) {
+      if (is_wayland && !std::getenv("BLENDER_DOME_XR")) {
 #    if defined(WITH_GHOST_WAYLAND)
         /* #GHOST_SystemWayland */
         oxr_binding.wl.type = XR_TYPE_GRAPHICS_BINDING_OPENGL_WAYLAND_KHR;

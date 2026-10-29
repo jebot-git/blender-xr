@@ -10866,7 +10866,8 @@ static const char *ghost_wl_app_id = (
 
 const char *GHOST_SystemWayland::xdg_app_id_get()
 {
-  return ghost_wl_app_id;
+  const char *dome_app_id = std::getenv("BLENDER_DOME_APP_ID");
+  return dome_app_id && *dome_app_id ? dome_app_id : ghost_wl_app_id;
 }
 
 xdg_wm_base *GHOST_SystemWayland::xdg_decor_shell_get()

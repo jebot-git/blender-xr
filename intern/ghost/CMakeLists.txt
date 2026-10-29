@@ -345,6 +345,8 @@ elseif(WITH_GHOST_X11 OR WITH_GHOST_WAYLAND)
       ${INC_DST}
     )
 
+    generate_protocol_bindings("${CMAKE_CURRENT_SOURCE_DIR}/intern/dome-appmenu.xml")
+
     # `xdg-shell`.
     generate_protocol_bindings(
       "${WAYLAND_PROTOCOLS_DIR}/stable/xdg-shell/xdg-shell.xml"
